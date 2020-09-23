@@ -11,6 +11,7 @@ public class Account {
     private AccountType accountType;
     private Card attachedCard;
     private List<PossibleFailure> possibleFailures;
+    private User user;
 
     public Long getId() {
         return id;
@@ -50,5 +51,21 @@ public class Account {
 
     public void setAttachedCard(Card attachedCard) {
         this.attachedCard = attachedCard;
+    }
+
+    public List<PossibleFailure> getPossibleFailures() {
+        return possibleFailures;
+    }
+
+    public void setPossibleFailures(List<PossibleFailure> possibleFailures) {
+        this.possibleFailures = possibleFailures;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
