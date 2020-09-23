@@ -1,13 +1,11 @@
 package com.tech.atm.model;
 
-import java.text.DecimalFormat;
-
 public class AccountType {
 
     private Long id;
     private String accountType;
     private Boolean possibilityToExtractFromATM;
-    private DecimalFormat moneyDecimalFormat;
+    private Currency currency;
 
     public Long getId() {
         return id;
@@ -33,11 +31,12 @@ public class AccountType {
         this.possibilityToExtractFromATM = possibilityToExtractFromATM;
     }
 
-    public DecimalFormat getMoneyDecimalFormat() {
-        return moneyDecimalFormat;
+    public Currency getCurrency() {
+        return currency;
     }
 
-    public void setMoneyDecimalFormat(DecimalFormat moneyDecimalFormat) {
-        this.moneyDecimalFormat = moneyDecimalFormat;
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
     }
 }
+
