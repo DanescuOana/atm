@@ -1,7 +1,6 @@
 package com.tech.atm.model;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 public class Account {
 
@@ -10,7 +9,6 @@ public class Account {
     private BigDecimal balanceAccount;
     private AccountType accountType;
     private Card attachedCard;
-    private List<PossibleFailure> possibleFailures;
     private User user;
 
     public Long getId() {
@@ -51,14 +49,6 @@ public class Account {
 
     public void setAttachedCard(Card attachedCard) {
         this.attachedCard = attachedCard;
-    }
-
-    public List<PossibleFailure> getPossibleFailures() {
-        return possibleFailures;
-    }
-
-    public void setPossibleFailures(List<PossibleFailure> possibleFailures) {
-        this.possibleFailures = possibleFailures;
     }
 
     public User getUser() {
