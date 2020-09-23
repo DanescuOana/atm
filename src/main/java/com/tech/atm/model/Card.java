@@ -1,12 +1,10 @@
 package com.tech.atm.model;
 
-import java.util.List;
-
 public class Card {
     private Long id;
     private Long cardNumber;
     private Long pin;
-    private String cardOwnerName;
+    private User user;
 
     public Long getId() {
         return id;
@@ -32,11 +30,11 @@ public class Card {
         this.pin = pin;
     }
 
-    public String getCardOwnerName() {
-        return cardOwnerName;
+    public User getUser() {
+        return user;
     }
 
-    public void setCardOwnerName(String cardOwnerName) {
-        this.cardOwnerName = cardOwnerName;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
