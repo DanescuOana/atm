@@ -3,11 +3,18 @@ package com.tech.atm.model;
 import java.util.List;
 
 public class Card {
+    private Long id;
     private Long cardNumber;
-    private List<Account> accountsAttachedToCard;
     private Long pin;
     private String cardOwnerName;
-    private Account currentAccount;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getCardNumber() {
         return cardNumber;
@@ -15,14 +22,6 @@ public class Card {
 
     public void setCardNumber(Long cardNumber) {
         this.cardNumber = cardNumber;
-    }
-
-    public List<Account> getAccountsAttachedToCard() {
-        return accountsAttachedToCard;
-    }
-
-    public void setAccountsAttachedToCard(List<Account> accountsAttachedToCard) {
-        this.accountsAttachedToCard = accountsAttachedToCard;
     }
 
     public Long getPin() {
@@ -39,13 +38,5 @@ public class Card {
 
     public void setCardOwnerName(String cardOwnerName) {
         this.cardOwnerName = cardOwnerName;
-    }
-
-    public Account getCurrentAccount() {
-        return currentAccount;
-    }
-
-    public void setCurrentAccount(Account currentAccount) {
-        this.currentAccount = currentAccount;
     }
 }
