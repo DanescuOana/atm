@@ -1,18 +1,9 @@
 package com.tech.atm.model;
 
 public class Card {
-    private Long id;
     private Long cardNumber;
     private Long pin;
     private User user;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Long getCardNumber() {
         return cardNumber;
