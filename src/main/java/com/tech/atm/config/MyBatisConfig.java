@@ -30,7 +30,8 @@ public class MyBatisConfig {
         bean.setDataSource(dataSource);
         bean.setTypeAliasesPackage("com.tech.atm.model");
         bean.setMapperLocations(new Resource[] {
-                new ClassPathResource("com/tech/atm/account/dao/sqlmap/account-sqlmap.xml")
+                new ClassPathResource("com/tech/atm/account/dao/sqlmap/account-sqlmap.xml"),
+                new ClassPathResource("com/tech/atm/card/dao/sqlmap/card-sqlmap.xml")
         });
         return bean.getObject();
     }

@@ -4,6 +4,23 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="account">
 
+    <resultMap id="accountMap" type="Account">
+        <id column="id" property="id"/>
+        <result column="iban" property="iban"/>
+        <result column="balance_account" property="balanceAccount"/>
+
+        <result column="account_type_id" property="accountType.id"></result>
+        <result column="account_type_name" property="accountType.accountType"></result>
+        <result column="posibility_to_extract" property="accountType.possibilityToExtractFromATM"></result>
+
+        <result column="account_currency_id" property="accountType.currency.id"></result>
+        <result column="account_currency_name" property="accountType.currency.name"></result>
+        <result column="account_currency_unit" property="accountType.currency.unit"></result>
+
+        <result column="card_number" property="attachedCard.cardNumber"></result>
+        <result column="user_id" property="user.id"/>
+    </resultMap>
+
     <select id="loadAccounts" resultType="Account">
          select id
            from account

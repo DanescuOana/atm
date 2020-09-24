@@ -1,4 +1,4 @@
-package com.tech.atm.support;
+package com.tech.atm.support.mybatis;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
