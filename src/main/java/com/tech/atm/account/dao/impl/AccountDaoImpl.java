@@ -2,7 +2,7 @@ package com.tech.atm.account.dao.impl;
 
 import com.tech.atm.account.dao.AccountDao;
 import com.tech.atm.model.Account;
-import com.tech.atm.support.MyBatisSupport;
+import com.tech.atm.support.mybatis.MyBatisSupport;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
