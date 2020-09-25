@@ -11,7 +11,7 @@
 
         <result column="account_type_id" property="accountType.id"></result>
         <result column="account_type_name" property="accountType.accountType"></result>
-        <result column="posibility_to_extract" property="accountType.possibilityToExtractFromATM"></result>
+        <result column="posibility_extract_from_atm" property="accountType.possibilityToExtractFromATM"></result>
 
         <result column="account_currency_id" property="accountType.currency.id"></result>
         <result column="account_currency_name" property="accountType.currency.name"></result>
@@ -19,10 +19,42 @@
 
         <result column="card_number" property="attachedCard.cardNumber"></result>
         <result column="user_id" property="user.id"/>
+        <result column="user_name" property="user.name"/>
     </resultMap>
 
-    <select id="loadAccounts" resultType="Account">
-         select id
-           from account
+    <select id="loadDetailsAccountsByCardNumber" resultMap="accountMap">
+         select account.id,
+                account.iban,
+                account.balance_account,
+                account.account_type_id,
+                acctype.account_type account_type_name,
+                acctype.currency_id,
+                account.card_number,
+                account.user_id,
+                user.name user_name,
+                currency.unit account_currency_unit
+         FROM account INNER JOIN user
+                    ON account.user_id = user.id
+                    INNER JOIN account_type acctype
+                    ON account.account_type_id = acctype.id
+                    INNER JOIN currency
+                    ON acctype.currency_id = currency.id
+               WHERE account.card_number = #{cardNumber}
+         ORDER BY acctype.possibility_extract_from_atm DESC
     </select>
+
+    <select id="checkIfUserCanWithdraw" parameterType="Map">
+        SELECT CASE
+            WHEN #{amount} > balance_account THEN 0
+                ELSE 1
+            END
+        FROM account WHERE iban = #{iban}
+    </select>
+
+
+    <update id="updateAmountIntoDatabase" parameterType="Map">
+        UPDATE account
+            SET balance_account = #{amount}
+        WHERE iban = #{iban}
+    </update>
 </mapper>

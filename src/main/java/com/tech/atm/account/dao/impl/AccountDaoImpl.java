@@ -5,13 +5,32 @@ import com.tech.atm.model.Account;
 import com.tech.atm.support.mybatis.MyBatisSupport;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class AccountDaoImpl extends MyBatisSupport implements AccountDao {
 
     @Override
-    public List<Account> loadAccounts() {
-        return getSqlSession().selectList("account.loadAccounts");
+    public List<Account> loadDetailsAccountsByCardNumber(Long cardNumber) {
+        return getSqlSession().selectList("account.loadDetailsAccountsByCardNumber", cardNumber);
+    }
+
+    @Override
+    public Boolean checkIfUserCanWithdraw(String iban, Long amount) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("iban", iban);
+        params.put("amount", amount);
+        return getSqlSession().selectOne("account.checkIfUserCanWithdraw", params);
+    }
+
+    @Override
+    public Boolean updateAmountIntoDatabase(String iban, BigDecimal amount) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("iban", iban);
+        params.put("amount", amount);
+        return getSqlSession().selectOne("account.updateAmountIntoDatabase", params);
     }
 }

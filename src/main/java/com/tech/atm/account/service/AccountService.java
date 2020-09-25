@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface AccountService{
 
-    List<Account> loadAccounts();
+    List<Account> loadDetailsAccountsByCardNumber(Long cardNumber);
+    Boolean withdrawMoneyFromAccount(Account account, Long amount);
 }
