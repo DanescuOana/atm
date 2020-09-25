@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -34,5 +35,14 @@ public class MyBatisConfig {
                 new ClassPathResource("com/tech/atm/card/dao/sqlmap/card-sqlmap.xml")
         });
         return bean.getObject();
+    }
+
+    @Bean(name = "messageSource")
+    public ResourceBundleMessageSource getMessageSource() {
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasename("messages/applicationMessages");
+        messageSource.setDefaultEncoding("UTF-8");
+       // messageSource.setUseCodeAsDefaultMessage(true);
+        return messageSource;
     }
 }
