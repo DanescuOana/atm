@@ -8,6 +8,7 @@ import java.util.List;
 public interface AccountDao {
 
     List<Account> loadDetailsAccountsByCardNumber(Long cardNumber);
-    Boolean checkIfUserCanWithdraw(String iban, Long amount);
-    Boolean updateAmountIntoDatabase(String iban, BigDecimal amount);
+    Integer checkIfUserCanWithdraw(String iban, Long amount);
+    Integer updateAmountIntoDatabase(String iban, BigDecimal amount);
+    Integer checkIfAcountCanWithdraw(String iban);
 }

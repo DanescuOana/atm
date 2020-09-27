@@ -43,7 +43,7 @@
          ORDER BY acctype.possibility_extract_from_atm DESC
     </select>
 
-    <select id="checkIfUserCanWithdraw" parameterType="Map">
+    <select id="checkIfUserCanWithdraw" parameterType="Map" resultType="java.lang.Integer">
         SELECT CASE
             WHEN #{amount} > balance_account THEN 0
                 ELSE 1
@@ -57,4 +57,11 @@
             SET balance_account = #{amount}
         WHERE iban = #{iban}
     </update>
+
+    <select id="checkIfAcountCanWithdraw" parameterType="String" resultType="java.lang.Integer">
+        SELECT account_type.possibility_extract_from_atm
+            FROM account
+        INNER JOIN account_type
+        on account.account_type_id= account_type.id WHERE account.iban = #{iban}
+    </select>
 </mapper>

@@ -19,7 +19,7 @@ public class AccountDaoImpl extends MyBatisSupport implements AccountDao {
     }
 
     @Override
-    public Boolean checkIfUserCanWithdraw(String iban, Long amount) {
+    public Integer checkIfUserCanWithdraw(String iban, Long amount) {
         Map<String, Object> params = new HashMap<>();
         params.put("iban", iban);
         params.put("amount", amount);
@@ -27,10 +27,15 @@ public class AccountDaoImpl extends MyBatisSupport implements AccountDao {
     }
 
     @Override
-    public Boolean updateAmountIntoDatabase(String iban, BigDecimal amount) {
+    public Integer updateAmountIntoDatabase(String iban, BigDecimal amount) {
         Map<String, Object> params = new HashMap<>();
         params.put("iban", iban);
         params.put("amount", amount);
         return getSqlSession().selectOne("account.updateAmountIntoDatabase", params);
+    }
+
+    @Override
+    public Integer checkIfAcountCanWithdraw(String iban) {
+        return getSqlSession().selectOne("account.checkIfAcountCanWithdraw", iban);
     }
 }
