@@ -1,5 +1,7 @@
 package com.tech.atm.model;
 
+import java.util.Objects;
+
 public class Card {
     private Long cardNumber;
     private Long pin;
@@ -27,5 +29,19 @@ public class Card {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
+        Card card = (Card) o;
+        return Objects.equals(cardNumber, card.cardNumber) &&
+                Objects.equals(pin, card.pin);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cardNumber, pin);
     }
 }

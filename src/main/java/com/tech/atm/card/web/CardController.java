@@ -2,7 +2,6 @@ package com.tech.atm.card.web;
 
 import com.tech.atm.card.service.CardService;
 import com.tech.atm.model.Card;
-import com.tech.atm.support.exception.BusinessException;
 import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +21,7 @@ public class CardController {
     }
 
     @PostMapping("/check-if-card-exist")
-    public Long checkExistCardByCardNumber(@RequestParam Long cardNumber) throws BusinessException {
+    public Long checkExistCardByCardNumber(@RequestParam Long cardNumber){
         LOG.info("******* calling REST endpoint /card/check-if-card-exist");
         return this.cardService.checkExistCardByCardNumber(cardNumber);
     }

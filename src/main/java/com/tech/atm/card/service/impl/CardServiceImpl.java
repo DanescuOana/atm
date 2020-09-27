@@ -27,19 +27,16 @@ public class CardServiceImpl implements CardService {
         if(cardNumberExistence == 0L) {
             LOG.error("******There is no cardNumber. Reinsert the cardNumber");
             throw new BusinessRuntimeException(new BusinessMessage("card.invalid.cardNumber"));
-        } else if(cardNumberExistence == 1L) {
+        } else {
             LOG.info("******CardNumber was found, proceed with the pin input.");
             return cardNumberExistence;
-        } else {
-            LOG.error("****Something unexpected happened, there is more than one card number into dataabase.");
-            throw new BusinessRuntimeException(new BusinessMessage("unexpected.error"));
         }
     }
 
     @Override
     public Card checkIfPinCorrect(Card card) {
         Card cardFromDb = this.cardDao.checkIfPinCorrect(card);
-        if(cardFromDb.equals(null)) {
+        if(null == cardFromDb) {
            LOG.error("**********this card is not found into database. Pin incorect.");
            throw new BusinessRuntimeException(new BusinessMessage("card.invalid.pin"));
         } else {
