@@ -10,7 +10,6 @@ public interface AccountService{
 
     List<Account> loadDetailsAccountsByCardNumber(Long cardNumber);
     Boolean withdrawMoneyFromAccount(Account account, Long amount);
-    void chooseOperation(Account account, ATMOperation operation);
+    Boolean chooseOperation(Account account, ATMOperation operation, Long amount);
     Boolean accountCanBeWithdaw(String iban);
-    Long processAmountInserted();
 }

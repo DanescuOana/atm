@@ -55,8 +55,8 @@ public class AccountServiceImpl implements AccountService {
             throw new BusinessRuntimeException(new BusinessMessage("account.insufficient.fund"));
         } else {
             BigDecimal remainAmount = account.getBalanceAccount().subtract(new BigDecimal(amount));
-            Integer process = this.accountDao.updateAmountIntoDatabase(account.getIban(), remainAmount);
-            processed = Boolean.valueOf(String.valueOf(process));
+            this.accountDao.updateAmountIntoDatabase(account.getIban(), remainAmount);
+            processed = true;
             LOG.error("******** Balance after withdraw = "+remainAmount);
         }
 
@@ -65,17 +65,15 @@ public class AccountServiceImpl implements AccountService {
 
     @Transactional
     @Override
-    public void chooseOperation(Account account, ATMOperation operation) {
+    public Boolean chooseOperation(Account account, ATMOperation operation, Long amount) {
         LOG.info("****** choose operation or account");
-        Long amount = 0L;
         if(ATMOperation.WITHDRAW.equals(operation)) {
             LOG.info("****** WITHDRAW operation");
             LOG.info("***** check if account have the possibility to withdraw.");
             if(this.accountCanBeWithdaw(account.getIban())) {
                 LOG.info("******* proceed with printing the next operations");
-                amount = this.processAmountInserted();
                 LOG.info("******* proceed with withdrawing acccount and print the results.");
-                this.withdrawMoneyFromAccount(account, amount);
+                return amount != null ?  this.withdrawMoneyFromAccount(account, amount) :  false;
             } else {
                 LOG.error("*********This iban="+account.getIban()+ " does not have posibility to withdraw.");
                 throw new BusinessRuntimeException(new BusinessMessage("account.type.no.withdraw"));
@@ -83,16 +81,20 @@ public class AccountServiceImpl implements AccountService {
         } else if(ATMOperation.DEPOSIT.equals(operation)) {
             LOG.info("****** DEPOSIT operation");
             LOG.info("******* iban="+account.getIban());
-            amount = this.processAmountInserted();
             LOG.info("********* check amount and then deposit.");
-            BigDecimal totalAmount = account.getBalanceAccount().add(new BigDecimal(amount));
-            Integer process = this.accountDao.updateAmountIntoDatabase(account.getIban(), totalAmount);
-            LOG.info("************amount have been deposited into account iban="+account.getIban());
 
+            if(amount != null) {
+                BigDecimal totalAmount = account.getBalanceAccount().add(new BigDecimal(amount));
+                this.accountDao.updateAmountIntoDatabase(account.getIban(), totalAmount);
+                LOG.info("************amount have been deposited into account iban="+account.getIban());
+                return true;
+            } else {
+                throw new BusinessRuntimeException(new BusinessMessage("account.operation.failed"));
+            }
         } else if(ATMOperation.CANCEL.equals(operation)) {
             LOG.info("****** CANCEL operation");
             LOG.info("******* return card to owner.");
-            LOG.info("********Bye bye "+account.getUser().getName());
+            return true;
 
         } else {
             LOG.error("****** UNKNOWN operation.");
@@ -104,15 +106,12 @@ public class AccountServiceImpl implements AccountService {
     public Boolean accountCanBeWithdaw(String iban) {
         Boolean canWithdraw = true;
         LOG.info("****** Check if account have the possibility to withdraw iban = "+iban);
-        canWithdraw = Boolean.valueOf(String.valueOf(this.accountDao.checkIfAcountCanWithdraw(iban)));
+
+        if(iban == null) {
+            throw new BusinessRuntimeException(new BusinessMessage("unexpected.error"));
+        }
+        canWithdraw = this.accountDao.checkIfAcountCanWithdraw(iban) == 0 ? false: true;
         LOG.info("******iban = "+iban+ " can withdraw: "+canWithdraw);
         return canWithdraw;
-    }
-
-    @Override
-    public Long processAmountInserted() {
-        LOG.info("*************insert amount:");
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLong();
     }
 }

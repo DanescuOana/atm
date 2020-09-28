@@ -10,6 +10,7 @@ public class Account {
     private AccountType accountType;
     private Card attachedCard;
     private User user;
+    private Boolean canWithdraw;
 
     public Long getId() {
         return id;
@@ -57,5 +58,13 @@ public class Account {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Boolean getCanWithdraw() {
+        return canWithdraw;
+    }
+
+    public void setCanWithdraw(Boolean canWithdraw) {
+        this.canWithdraw = canWithdraw;
     }
 }
