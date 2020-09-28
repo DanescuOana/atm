@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Scanner;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -104,7 +103,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Boolean accountCanBeWithdaw(String iban) {
-        Boolean canWithdraw = true;
+        Boolean canWithdraw;
         LOG.info("****** Check if account have the possibility to withdraw iban = "+iban);
 
         if(iban == null) {
