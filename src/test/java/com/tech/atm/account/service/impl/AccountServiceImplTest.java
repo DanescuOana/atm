@@ -37,39 +37,63 @@ public class AccountServiceImplTest extends CommonServiceImplTest {
     @Test
     public void withdrawMoneyFromAccountPass() {
         Long amount = 2L;
-        assertEquals(true, this.accountService.withdrawMoneyFromAccount(accounts.stream().filter(account -> account.getCanWithdraw() == true).findFirst().get(), amount));
+        assertEquals(true, this.accountService.withdrawMoneyFromAccount(
+                accounts.stream()
+                        .filter(account -> account.getCanWithdraw() == true)
+                        .findFirst()
+                        .get(), amount));
     }
 
     @Test
     public void withdrawMoneyFromAccountFail() {
         Long amount = 24555555555L;
         assertThrows(BusinessRuntimeException.class, () -> {
-            this.accountService.withdrawMoneyFromAccount((Account) accounts.stream().filter(account -> account.getCanWithdraw()).findFirst().get(), amount);
+            this.accountService.withdrawMoneyFromAccount(
+                    (Account) accounts.stream()
+                            .filter(account -> account.getCanWithdraw())
+                            .findFirst()
+                            .get(), amount);
         });
     }
 
     //chooseOperationComplete WITHDRAW methods Tests
     @Test
     public void chooseOperationCompleteCanWithdrawNullAmount() {
-        assertNotEquals(true, this.accountService.chooseOperation((Account) accounts.stream().filter(account -> account.getCanWithdraw()).findFirst().get(), ATMOperation.WITHDRAW, null));
+        assertNotEquals(true, this.accountService.chooseOperation(
+                (Account) accounts.stream()
+                        .filter(account -> account.getCanWithdraw())
+                        .findFirst()
+                        .get(), ATMOperation.WITHDRAW, null));
     }
 
     @Test
     public void chooseOperationCompleteCanWithdrawTrue() {
-        assertEquals(true, this.accountService.chooseOperation((Account) accounts.stream().filter(account -> account.getCanWithdraw()).findFirst().get(), ATMOperation.WITHDRAW, 3L));
+        assertEquals(true, this.accountService.chooseOperation(
+                (Account) accounts.stream()
+                        .filter(account -> account.getCanWithdraw())
+                        .findFirst()
+                        .get(), ATMOperation.WITHDRAW, 3L));
     }
 
     @Test
     public void chooseOperationCompleteCanWithdrawFalse() {
         assertThrows(BusinessRuntimeException.class, () -> {
-            this.accountService.chooseOperation((Account) accounts.stream().filter(account -> account.getCanWithdraw()).findFirst().get(), ATMOperation.WITHDRAW, 35464564L);
+            this.accountService.chooseOperation(
+                    (Account) accounts.stream()
+                            .filter(account -> account.getCanWithdraw())
+                            .findFirst()
+                            .get(), ATMOperation.WITHDRAW, 35464564L);
         });
     }
 
     @Test
     public void chooseOperationCompleteWithdrawFail() {
         assertThrows(BusinessRuntimeException.class, () -> {
-            this.accountService.chooseOperation((Account) accounts.stream().filter(account -> !account.getCanWithdraw()).findFirst().get(), ATMOperation.WITHDRAW,34L);
+            this.accountService.chooseOperation(
+                    (Account) accounts.stream()
+                            .filter(account -> !account.getCanWithdraw())
+                            .findFirst()
+                            .get(), ATMOperation.WITHDRAW, 34L);
         });
     }
 
@@ -77,26 +101,38 @@ public class AccountServiceImplTest extends CommonServiceImplTest {
     @Test
     public void chooseOperationCompleteDepositNull() {
         assertThrows(BusinessRuntimeException.class, () -> {
-            this.accountService.chooseOperation((Account) accounts.stream().findFirst().get(), ATMOperation.DEPOSIT,null);
+            this.accountService.chooseOperation(
+                    (Account) accounts.stream()
+                            .findFirst()
+                            .get(), ATMOperation.DEPOSIT, null);
         });
     }
 
     @Test
     public void chooseOperationCompleteDepositTrue() {
-        assertEquals(true, this.accountService.chooseOperation((Account) accounts.stream().findFirst().get(), ATMOperation.DEPOSIT,2332L));
+        assertEquals(true, this.accountService.chooseOperation(
+                (Account) accounts.stream()
+                        .findFirst()
+                        .get(), ATMOperation.DEPOSIT, 2332L));
     }
 
     //chooseOperationComplete CANCEL methods Tests
     @Test
     public void chooseOperationCompleteCancel() {
-        assertEquals(true, this.accountService.chooseOperation((Account) accounts.stream().findFirst().get(), ATMOperation.CANCEL,23L));
+        assertEquals(true, this.accountService.chooseOperation(
+                (Account) accounts.stream()
+                        .findFirst()
+                        .get(), ATMOperation.CANCEL, 23L));
     }
 
     //chooseOperationComplete CANCEL methods Tests
     @Test
     public void chooseOperationCompleteOther() {
         assertThrows(BusinessRuntimeException.class, () -> {
-            this.accountService.chooseOperation((Account) accounts.stream().findFirst().get(), ATMOperation.OTHER,23L);
+            this.accountService.chooseOperation(
+                    (Account) accounts.stream()
+                            .findFirst()
+                            .get(), ATMOperation.OTHER, 23L);
         });
     }
 
