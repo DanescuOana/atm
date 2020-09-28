@@ -19,15 +19,15 @@ public class CardController {
         this.cardService = cardService;
     }
 
-    @PostMapping("/check-if-card-exist")
+    @PostMapping("/existance")
     public Long checkExistCardByCardNumber(@RequestParam Long cardNumber){
-        LOG.info("******* calling REST endpoint /card/check-if-card-exist");
+        LOG.info("******* calling REST endpoint /card/existance");
         return this.cardService.checkExistCardByCardNumber(cardNumber);
     }
 
-    @PostMapping("/check-if-pin is-correct")
+    @PostMapping("/authorize")
     public Card checkIfPinCorrect(@RequestBody Card card){
-        LOG.info("******* calling REST endpoint /card/check-if-pin");
+        LOG.info("******* calling REST endpoint /card/authorize");
         return this.cardService.checkIfPinCorrect(card);
     }
 }

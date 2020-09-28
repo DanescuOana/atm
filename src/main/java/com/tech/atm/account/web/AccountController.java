@@ -24,27 +24,27 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-    @PostMapping("/load-accounts-by-card-number")
+    @PostMapping("/accounts")
     public List<Account> loadAccountsForCardNumber(@RequestParam Long cardNumber){
-        LOG.info("******* calling REST endpoint /account/load-accounts-by-card-number");
+        LOG.info("******* calling REST endpoint /account/accounts");
         return this.accountService.loadDetailsAccountsByCardNumber(cardNumber);
     }
 
-    @PostMapping("/withdraw-money-from-account")
+    @PostMapping("/withdraw")
     public Boolean withdrawMoneyFromAccount(@RequestBody Account account, @RequestParam Long amount){
-        LOG.info("******* calling REST endpoint /account/withdraw-money-from-account");
+        LOG.info("******* calling REST endpoint /account/withdraw");
         return this.accountService.withdrawMoneyFromAccount(account, amount);
     }
 
-    @PostMapping("/account-can-be-withdraw")
+    @PostMapping("/can-withdraw")
     public Boolean accountCanBeWithdaw(@RequestParam String iban){
-        LOG.info("******* calling REST endpoint /account/account-can-be-withdraw");
+        LOG.info("******* calling REST endpoint /account/can-withdraw");
         return this.accountService.accountCanBeWithdaw(iban);
     }
 
-    @PostMapping("/choose-operation")
+    @PostMapping("/operation")
     public Boolean chooseOperation(@RequestBody ChooseOperationWrapper operationWrapper){
-        LOG.info("******* calling REST endpoint /account/choose-operation");
+        LOG.info("******* calling REST endpoint /account/operation");
         return this.accountService.chooseOperation(operationWrapper.getAccount(), operationWrapper.getAtmOperation(), operationWrapper.getAmount());
     }
 }
