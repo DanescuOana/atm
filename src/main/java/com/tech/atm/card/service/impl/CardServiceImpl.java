@@ -16,7 +16,6 @@ public class CardServiceImpl implements CardService {
     private static final Logger LOG =   LoggerFactory.getLogger(CardServiceImpl.class);
     private CardDao cardDao;
 
-    @Autowired
     public CardServiceImpl(CardDao cardDao) {
         this.cardDao = cardDao;
     }

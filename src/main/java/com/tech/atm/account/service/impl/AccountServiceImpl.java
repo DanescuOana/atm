@@ -21,7 +21,6 @@ public class AccountServiceImpl implements AccountService {
     private static final Logger LOG =   LoggerFactory.getLogger(AccountServiceImpl.class);
     private AccountDao accountDao;
 
-    @Autowired
     public AccountServiceImpl(AccountDao accountDao) {
         this.accountDao = accountDao;
     }

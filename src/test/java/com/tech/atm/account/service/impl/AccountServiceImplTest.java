@@ -22,6 +22,7 @@ public class AccountServiceImplTest extends CommonServiceImplTest {
     @Test
     public void loadDetailsAccountsByCardNumberPass() {
         List<Account> accounts=this.accountService.loadDetailsAccountsByCardNumber(cardNumbers.get(0));
+        assertNotNull(accounts);
         assertFalse(accounts.isEmpty());
     }
 

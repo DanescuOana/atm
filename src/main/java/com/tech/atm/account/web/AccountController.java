@@ -20,7 +20,6 @@ public class AccountController {
     private AccountService accountService;
     private static final Logger LOG =   LoggerFactory.getLogger(AccountController.class);
 
-    @Autowired
     public AccountController(AccountService accountService) {
         this.accountService = accountService;
     }
