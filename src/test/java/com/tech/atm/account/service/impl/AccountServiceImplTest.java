@@ -2,8 +2,8 @@ package com.tech.atm.account.service.impl;
 
 import com.tech.atm.account.service.AccountService;
 import com.tech.atm.common.CommonServiceImplTest;
-import com.tech.atm.model.Account;
-import com.tech.atm.model.logic.ATMOperation;
+import com.tech.atm.domain.vo.Account;
+import com.tech.atm.domain.logic.ATMOperation;
 import com.tech.atm.support.exception.BusinessRuntimeException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

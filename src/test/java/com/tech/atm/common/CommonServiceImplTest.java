@@ -1,6 +1,6 @@
 package com.tech.atm.common;
 
-import com.tech.atm.model.Account;
+import com.tech.atm.domain.vo.Account;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

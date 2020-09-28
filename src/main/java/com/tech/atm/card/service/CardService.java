@@ -1,6 +1,6 @@
 package com.tech.atm.card.service;
 
-import com.tech.atm.model.Card;
+import com.tech.atm.domain.vo.Card;
 import com.tech.atm.support.exception.BusinessRuntimeException;
 
 public interface CardService {

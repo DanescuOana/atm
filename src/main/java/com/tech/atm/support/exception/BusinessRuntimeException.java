@@ -1,6 +1,6 @@
 package com.tech.atm.support.exception;
 
-import com.tech.atm.model.logic.BusinessMessage;
+import com.tech.atm.domain.logic.BusinessMessage;
 
 import java.util.List;
 

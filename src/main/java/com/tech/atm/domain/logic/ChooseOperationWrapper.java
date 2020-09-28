@@ -1,6 +1,6 @@
-package com.tech.atm.model.logic;
+package com.tech.atm.domain.logic;
 
-import com.tech.atm.model.Account;
+import com.tech.atm.domain.vo.Account;
 
 public class ChooseOperationWrapper {
     private Account account;

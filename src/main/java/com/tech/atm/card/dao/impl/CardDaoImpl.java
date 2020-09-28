@@ -1,7 +1,7 @@
 package com.tech.atm.card.dao.impl;
 
 import com.tech.atm.card.dao.CardDao;
-import com.tech.atm.model.Card;
+import com.tech.atm.domain.vo.Card;
 import com.tech.atm.support.mybatis.MyBatisSupport;
 import org.springframework.stereotype.Repository;
 

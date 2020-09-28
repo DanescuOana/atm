@@ -1,6 +1,6 @@
 package com.tech.atm.account.dao;
 
-import com.tech.atm.model.Account;
+import com.tech.atm.domain.vo.Account;
 
 import java.math.BigDecimal;
 import java.util.List;

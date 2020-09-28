@@ -1,6 +1,6 @@
 package com.tech.atm.card.dao;
 
-import com.tech.atm.model.Card;
+import com.tech.atm.domain.vo.Card;
 
 public interface CardDao {
 

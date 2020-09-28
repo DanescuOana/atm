@@ -1,8 +1,7 @@
 package com.tech.atm.account.service;
 
-import com.tech.atm.model.Account;
-import com.tech.atm.model.logic.ATMOperation;
-import com.tech.atm.support.exception.BusinessException;
+import com.tech.atm.domain.vo.Account;
+import com.tech.atm.domain.logic.ATMOperation;
 
 import java.util.List;
 

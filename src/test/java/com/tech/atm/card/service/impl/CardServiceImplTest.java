@@ -2,7 +2,7 @@ package com.tech.atm.card.service.impl;
 
 import com.tech.atm.card.service.CardService;
 import com.tech.atm.common.CommonServiceImplTest;
-import com.tech.atm.model.Card;
+import com.tech.atm.domain.vo.Card;
 import com.tech.atm.support.exception.BusinessRuntimeException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.tech.atm.model;
+package com.tech.atm.domain.vo;
 
 public class User {
     private Long id;

@@ -1,8 +1,6 @@
 package com.tech.atm.support.exception;
 
-import com.tech.atm.model.logic.BusinessMessage;
-
-import java.util.List;
+import com.tech.atm.domain.logic.BusinessMessage;
 
 public class BusinessException extends Exception {
 

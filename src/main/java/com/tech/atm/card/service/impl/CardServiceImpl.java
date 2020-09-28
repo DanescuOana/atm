@@ -2,12 +2,11 @@ package com.tech.atm.card.service.impl;
 
 import com.tech.atm.card.dao.CardDao;
 import com.tech.atm.card.service.CardService;
-import com.tech.atm.model.Card;
-import com.tech.atm.model.logic.BusinessMessage;
+import com.tech.atm.domain.vo.Card;
+import com.tech.atm.domain.logic.BusinessMessage;
 import com.tech.atm.support.exception.BusinessRuntimeException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -2,13 +2,12 @@ package com.tech.atm.account.service.impl;
 
 import com.tech.atm.account.dao.AccountDao;
 import com.tech.atm.account.service.AccountService;
-import com.tech.atm.model.Account;
-import com.tech.atm.model.logic.ATMOperation;
-import com.tech.atm.model.logic.BusinessMessage;
+import com.tech.atm.domain.vo.Account;
+import com.tech.atm.domain.logic.ATMOperation;
+import com.tech.atm.domain.logic.BusinessMessage;
 import com.tech.atm.support.exception.BusinessRuntimeException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -29,7 +29,7 @@ public class MyBatisConfig {
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setTypeAliasesPackage("com.tech.atm.model");
+        bean.setTypeAliasesPackage("com.tech.atm.domain");
         bean.setMapperLocations(new Resource[] {
                 new ClassPathResource("com/tech/atm/account/dao/sqlmap/account-sqlmap.xml"),
                 new ClassPathResource("com/tech/atm/card/dao/sqlmap/card-sqlmap.xml")

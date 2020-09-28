@@ -1,11 +1,10 @@
 package com.tech.atm.card.web;
 
 import com.tech.atm.card.service.CardService;
-import com.tech.atm.model.Card;
+import com.tech.atm.domain.vo.Card;
 import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @Api

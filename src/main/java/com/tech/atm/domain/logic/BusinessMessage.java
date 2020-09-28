@@ -1,4 +1,4 @@
-package com.tech.atm.model.logic;
+package com.tech.atm.domain.logic;
 
 public class BusinessMessage {
 
