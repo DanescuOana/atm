@@ -36,13 +36,4 @@ public class MyBatisConfig {
         });
         return bean.getObject();
     }
-
-    @Bean(name = "messageSource")
-    public ResourceBundleMessageSource getMessageSource() {
-        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasename("messages/applicationMessages");
-        messageSource.setDefaultEncoding("UTF-8");
-       // messageSource.setUseCodeAsDefaultMessage(true);
-        return messageSource;
-    }
 }
