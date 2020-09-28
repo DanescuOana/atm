@@ -22,12 +22,6 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-    @PostMapping("/accounts")
-    public List<Account> loadAccountsForCardNumber(@RequestParam Long cardNumber){
-        LOG.info("******* calling REST endpoint /account/accounts");
-        return this.accountService.loadDetailsAccountsByCardNumber(cardNumber);
-    }
-
     @PostMapping("/withdraw")
     public Boolean withdrawMoneyFromAccount(@RequestBody Account account, @RequestParam Long amount){
         LOG.info("******* calling REST endpoint /account/withdraw");
