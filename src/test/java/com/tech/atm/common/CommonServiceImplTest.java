@@ -72,7 +72,7 @@ public class CommonServiceImplTest {
     }
 
     public List<Account> getAccounts() {
-        String sql = "select account.iban, account.balance_account balanceAccount, account.card_number cardNumber from account where user_id="+userId;
+        String sql = "select account.iban, account.balance_account balanceAccount, account.card_number cardNumber, account_type.possibility_extract_from_atm  canWithdraw from account inner join account_type on account.account_type_id = account_type.id where user_id="+userId;
 
         return jdbcTemplate.query(sql,
                 new BeanPropertyRowMapper<Account>(Account.class));
